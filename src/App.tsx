@@ -1,9 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 
 declare global {
-  interface Window {
-    sdk?: any;
-  }
+  interface Window { sdk?: any }
 }
 
 const FORTUNES = [
@@ -28,10 +26,39 @@ export default function App() {
     [seed]
   );
 
-  // 🔹 Panggil sdk.actions.ready() saat app sudah siap
+  // ✅ Panggil ready() robust supaya splash pasti hilang
   useEffect(() => {
-    window.sdk?.actions?.ready?.();
-    window.sdk?.actions?.setTitle?.("Fortune Cookie");
+    let done = false;
+
+    const callReady = () => {
+      if (done) return;
+      const ok = !!window.sdk?.actions?.ready;
+      if (ok) {
+        try {
+          window.sdk.actions.ready();
+          window.sdk.actions.setTitle?.("Fortune Cookie");
+          done = true;
+        } catch {
+          /* ignore */
+        }
+      }
+    };
+
+    // coba langsung
+    callReady();
+    // polling sampai SDK siap
+    const poll = setInterval(callReady, 100);
+    // fallback setelah window load
+    const onLoad = () => setTimeout(callReady, 0);
+    window.addEventListener("load", onLoad);
+    // guard terakhir 3 detik
+    const guard = setTimeout(callReady, 3000);
+
+    return () => {
+      clearInterval(poll);
+      clearTimeout(guard);
+      window.removeEventListener("load", onLoad);
+    };
   }, []);
 
   const openFortune = () => {
@@ -39,7 +66,7 @@ export default function App() {
     setCracking(true);
     setSeed((s) => s + 1);
 
-    // 🔊 mainkan suara crack
+    // 🔊 suara crack
     if (audioRef.current) {
       audioRef.current.currentTime = 0;
       audioRef.current.play().catch(() => {});
@@ -90,6 +117,7 @@ export default function App() {
           filter:blur(8px);
           border-radius:50%;
         }
+        button:active { transform: translateY(1px); }
       `}</style>
 
       <div
