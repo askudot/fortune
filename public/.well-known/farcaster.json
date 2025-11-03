@@ -1,0 +1,8 @@
+{
+  "name": "0xbuttt MiniApp",
+  "description": "My first Farcaster MiniApp built with Vite + React + Wagmi",
+  "icon_url": "https://your-domain.com/icon.png",
+  "splash_image_url": "https://your-domain.com/splash.png",
+  "splash_background_color": "#ffffff",
+  "web_url": "https://your-domain.com"
+}
