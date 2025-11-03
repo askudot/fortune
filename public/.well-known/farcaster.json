@@ -1,8 +1,8 @@
 {
-  "name": "0xbuttt MiniApp",
-  "description": "My first Farcaster MiniApp built with Vite + React + Wagmi",
-  "icon_url": "https://your-domain.com/icon.png",
-  "splash_image_url": "https://your-domain.com/splash.png",
-  "splash_background_color": "#ffffff",
-  "web_url": "https://your-domain.com"
+  "name": "Fortune Cookie",
+  "description": "Crack the cookie, hear the sound, and reveal your daily fortune!",
+  "icon_url": "https://fortune-murex.vercel.app/fortune.png",
+  "splash_image_url": "https://fortune-murex.vercel.app/fortune-splash.png",
+  "splash_background_color": "#fdfcf8",
+  "web_url": "https://fortune-murex.vercel.app/"
 }
