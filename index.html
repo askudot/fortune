@@ -1,10 +1,23 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <script src="https://miniapps.farcaster.xyz/sdk/v1"></script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Create Mini App</title>
+    <title>Fortune Cookie</title>
+
+    <!-- Farcaster Mini Apps SDK -->
+    <script src="https://miniapps.farcaster.xyz/sdk/v1"></script>
+
+    <!-- Mini App embed (AMAN: pakai &quot; agar tidak blank) -->
+    <meta name="fc:miniapp" content="{&quot;version&quot;:&quot;next&quot;,&quot;imageUrl&quot;:&quot;https://fortune-murex.vercel.app/og.png&quot;,&quot;button&quot;:{&quot;title&quot;:&quot;Open&quot;,&quot;action&quot;:{&quot;type&quot;:&quot;launch_miniapp&quot;,&quot;name&quot;:&quot;Fortune Cookie&quot;,&quot;url&quot;:&quot;https://fortune-murex.vercel.app&quot;,&quot;splashImageUrl&quot;:&quot;https://fortune-murex.vercel.app/fortune.png&quot;,&quot;splashBackgroundColor&quot;:&quot;#fdfcf8&quot;}}}" />
+
+    <!-- Fallback untuk klien lama -->
+    <meta name="fc:frame" content="{&quot;version&quot;:&quot;next&quot;,&quot;imageUrl&quot;:&quot;https://fortune-murex.vercel.app/og.png&quot;,&quot;button&quot;:{&quot;title&quot;:&quot;Open&quot;,&quot;action&quot;:{&quot;type&quot;:&quot;launch_miniapp&quot;,&quot;name&quot;:&quot;Fortune Cookie&quot;,&quot;url&quot;:&quot;https://fortune-murex.vercel.app&quot;,&quot;splashImageUrl&quot;:&quot;https://fortune-murex.vercel.app/fortune.png&quot;,&quot;splashBackgroundColor&quot;:&quot;#fdfcf8&quot;}}}" />
+
+    <!-- (opsional, buat preview umum) -->
+    <meta property="og:title" content="Fortune Cookie" />
+    <meta property="og:description" content="Crack the cookie. Hear the crack. Get your daily fortune." />
+    <meta property="og:image" content="https://fortune-murex.vercel.app/og.png" />
   </head>
   <body>
     <div id="root"></div>
