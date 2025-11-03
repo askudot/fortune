@@ -1,4 +1,5 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useMemo, useRef, useState } from "react";
+
 
 const FORTUNES = [
   "Go confidently in the direction of your dreams.",
