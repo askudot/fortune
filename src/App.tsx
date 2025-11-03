@@ -1,5 +1,10 @@
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
+declare global {
+  interface Window {
+    sdk?: any;
+  }
+}
 
 const FORTUNES = [
   "Go confidently in the direction of your dreams.",
@@ -23,6 +28,12 @@ export default function App() {
     [seed]
   );
 
+  // 🔹 Panggil sdk.actions.ready() saat app sudah siap
+  useEffect(() => {
+    window.sdk?.actions?.ready?.();
+    window.sdk?.actions?.setTitle?.("Fortune Cookie");
+  }, []);
+
   const openFortune = () => {
     if (cracking) return;
     setCracking(true);
@@ -44,7 +55,6 @@ export default function App() {
 
   return (
     <>
-      {/* 🔊 audio element */}
       <audio ref={audioRef} src="/crack.mp3" preload="auto" />
 
       <style>{`
